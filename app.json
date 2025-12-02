@@ -22,7 +22,8 @@
         "backgroundColor": "#00D09E"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.duckhanh2003.financeapp"
     },
     "web": {
       "bundler": "metro",
@@ -42,6 +43,10 @@
             "backgroundColor": "#00D09E"
           }
         }
+      ],
+      "expo-speech-recognition",
+      [
+        "@react-native-voice/voice"
       ]
     ],
     "experiments": {

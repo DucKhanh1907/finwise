@@ -1,20 +1,36 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-type AppButtonProps={
-    primary?: boolean;
-    title: string;
-    onPress?: () => void;
-}
-const AppButton: React.FC<AppButtonProps> = ({primary, title, onPress}) => {
-  return (
-    <TouchableOpacity style={{minWidth: wp('50%')}} onPress={onPress} className={`px-[8px] py-[8px] rounded-full items-center ${
-        primary ? 'bg-primary' : 'bg-ligtGreen'
-      }`}>
-        <Text className='text-[18px] text-center items-center color-letterAndIcon font-semibold'>{title}</Text>
-    </TouchableOpacity>
-  )
-}
+import Loading from './Loading';
 
-export default AppButton
+type AppButtonProps = {
+  primary?: boolean;
+  title: string;
+  onPress?: () => void;
+  className?: string;
+  loading ?: boolean;
+};
+
+const AppButton: React.FC<AppButtonProps> = ({ primary, title, onPress, className, loading}) => {
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      style={{ minWidth: wp('50%') }}
+      className={`px-[8px] py-[8px] rounded-full items-center justify-center 
+        ${primary ? 'bg-primary' : 'bg-lightGreen'} ${className ?? ''}`}
+    >
+      {
+        loading
+        ?
+          <Loading size={hp(4)}/>
+        :
+          <Text className="text-[18px] text-center text-letterAndIcon font-semibold">
+            {title}
+          </Text>
+      }
+    </TouchableOpacity>
+  );
+};
+
+export default AppButton;
